@@ -1,6 +1,6 @@
 {
   "name": "@davidahouse/lynn",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A high level API for making web requests",
   "license": "MIT",
   "repository": "davidahouse/lynn",
@@ -9,12 +9,14 @@
     "chai": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-google": "^0.11.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nock": "^10.0.6"
   },
   "scripts": {
     "lint": "eslint $(find . -name \"*.js\" -not -path \"./node_modules/*\" -not -path \"./public/*\")",
     "lint-fix": "eslint --fix $(find . -name \"*.js\" -not -path \"./node_modules/*\" -not -path \"./public/*\")",
-    "test": "mocha"
+    "test": "mocha",
+    "test-debug": "mocha --inspect-brk test/lynn-request-tests.js"
   },
   "dependencies": {
     "jsonpath": "^1.0.0",
