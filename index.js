@@ -118,10 +118,21 @@ class LynnRunner {
 
       for (const key in this.request.capture) {
         if (this.request.capture.hasOwnProperty(key)) {
-          const path = this.request.capture[key]
+          let path = this.request.capture[key]
+          let isArrayPath = false
+          if (path.startsWith('[') && path.endsWith(']')) {
+            path = path.slice(1, -1)
+            isArrayPath = true
+          }
           const found = jp.query(result, path)
           if (found != null) {
-            captured[key] = found
+            if (isArrayPath) {
+              captured[key] = found
+            } else if (found.length > 0) {
+              captured[key] = found[0]
+            }
+          } else {
+            captured[key] = null
           }
         }
       }
