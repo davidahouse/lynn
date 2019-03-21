@@ -1,5 +1,9 @@
 ## lynn
 
+## 0.3.0
+
+- [7] Added support for query parameters.
+
 ## 0.2.0
 
 - [5] Default to non-array when capturing, but you can capture an array by surrounding path with []

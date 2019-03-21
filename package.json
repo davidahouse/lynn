@@ -1,6 +1,6 @@
 {
   "name": "@davidahouse/lynn",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A high level API for making web requests",
   "license": "MIT",
   "repository": "davidahouse/lynn",

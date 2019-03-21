@@ -1,6 +1,7 @@
 const http = require('http')
 const https = require('https')
 const jp = require('jsonpath')
+const querystring = require('querystring')
 
 /**
 * This class represents a high level Web Request
@@ -18,12 +19,13 @@ class LynnRunner {
 
     this.execute = function(callback) {
       // create our http options object
+      const path = this.buildPath(this.request.options, environment)
       const options = {
         'protocol': this.envReplace(this.request.options.protocol, environment, 'http:'),
         'host': this.envReplace(this.request.options.host, environment, 'localhost'),
         'port': this.envReplace(this.request.options.port, environment, '80'),
         'method': this.envReplace(this.request.options.method, environment, 'GET'),
-        'path': this.envReplace(this.request.options.path, environment, '/'),
+        'path': path,
         'headers': this.envReplaceHeaders(this.request.options.headers, environment),
         'auth': this.envReplace(this.request.options.auth, environment, null),
         'timeout': this.envReplace(this.request.options.timeout, environment, 30000),
@@ -94,6 +96,15 @@ class LynnRunner {
 
     this.replace = function(templateString, templateVars) {
       return new Function('return `'+templateString +'`;').call(templateVars)
+    }
+
+    this.buildPath = function(options, environment) {
+      const basePath = this.envReplace(options.path, environment, '/')
+      if (options.queryString != null) {
+        return basePath + '?' + querystring.stringify(options.queryString)
+      } else {
+        return basePath
+      }
     }
 
     this.envReplaceHeaders = function(headers, environment) {
