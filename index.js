@@ -101,7 +101,12 @@ class LynnRunner {
     this.buildPath = function(options, environment) {
       const basePath = this.envReplace(options.path, environment, '/')
       if (options.queryString != null) {
-        return basePath + '?' + querystring.stringify(options.queryString)
+        const queryString = queryString.stringify(options.queryString)
+        if (queryString != '') {
+          return basePath + '?' + querystring.stringify(options.queryString)
+        } else {
+          return basePath
+        }
       } else {
         return basePath
       }

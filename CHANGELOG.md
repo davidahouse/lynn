@@ -1,5 +1,9 @@
 ## lynn
 
+## 0.3.1
+
+- [8] Fixed bug causing ? to show up at the end of the path when no query params given
+
 ## 0.3.0
 
 - [7] Added support for query parameters.
