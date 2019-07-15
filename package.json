@@ -1,6 +1,6 @@
 {
   "name": "@davidahouse/lynn",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A high level API for making web requests",
   "license": "MIT",
   "repository": "davidahouse/lynn",
@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "jsonpath": "^1.0.0",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "lodash": ">=4.17.13"
   },
   "eslintConfig": {
     "env": {
