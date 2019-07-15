@@ -1,5 +1,9 @@
 ## lynn
 
+## 0.4.0
+
+- [9] Added endTime to the response json
+
 ## 0.3.1
 
 - [8] Fixed bug causing ? to show up at the end of the path when no query params given

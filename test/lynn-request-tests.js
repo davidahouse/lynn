@@ -52,6 +52,7 @@ describe('Lynn Runner', function() {
       const runner = new LynnRunner(successAPIRequest, environment)
       runner.execute(function(result) {
         expect(result.statusCode).to.equal(200)
+        expect(result.endTime).to.not.equal(null)
         done()
       })
     })
@@ -75,7 +76,7 @@ describe('Lynn Runner', function() {
       const runner = new LynnRunner(successAPIRequest, environment)
       runner.execute(function(result) {
         const captured = runner.captured(result)
-        expect(captured.hasOwnProperty('NOTFOUND')).to.equal(false)
+        expect(Object.prototype.hasOwnProperty.call(captured, 'NOTFOUND')).to.equal(false)
         done()
       })
     })

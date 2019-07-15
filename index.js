@@ -53,6 +53,7 @@ class LynnRunner {
               'data': parsedData,
               'error': null,
               'responseTime': hrend[1] / 1000000,
+              'endTime': Date.now(),
             }
             callback(result)
           } catch (e) {
@@ -63,6 +64,7 @@ class LynnRunner {
               'data': null,
               'error': e,
               'responseTime': hrend[1] / 1000000,
+              'endTime': Date.now(),
             }
             callback(result)
           }
@@ -77,6 +79,7 @@ class LynnRunner {
           'data': null,
           'error': e,
           'responseTime': null,
+          'endTime': Date.now(),
         }
         callback(result)
       })
@@ -115,7 +118,7 @@ class LynnRunner {
     this.envReplaceHeaders = function(headers, environment) {
       const newHeaders = {}
       for (const key in headers) {
-        if (headers.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(headers, key)) {
           const newValue = this.envReplace(headers[key], environment, null)
           if (newValue != null) {
             newHeaders[key] = newValue
@@ -133,7 +136,7 @@ class LynnRunner {
       const captured = {}
 
       for (const key in this.request.capture) {
-        if (this.request.capture.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(this.request.capture, key)) {
           let path = this.request.capture[key]
           let isArrayPath = false
           if (path.startsWith('[') && path.endsWith(']')) {
